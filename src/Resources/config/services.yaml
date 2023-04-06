@@ -1,0 +1,5 @@
+parameters:
+# nothing to declare
+services:
+  Mubiridziri\Geocenter\Service\Transport:
+    arguments: ['', '', '@serializer', '@http_client']
