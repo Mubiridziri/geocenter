@@ -19,9 +19,6 @@ class Configuration implements ConfigurationInterface
         }
 
         $rootNode->children()
-            ->scalarNode('host')
-            ->cannotBeEmpty()
-            ->end()
             ->scalarNode('license')
             ->cannotBeEmpty()
             ->end()

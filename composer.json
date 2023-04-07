@@ -16,6 +16,8 @@
     "require": {
         "symfony/http-kernel": "5.4.x-dev",
         "symfony/dependency-injection": "5.4.x-dev",
-        "symfony/config": "5.4.x-dev"
+        "symfony/config": "5.4.x-dev",
+        "symfony/http-client": "5.4.x-dev",
+        "symfony/serializer": "5.4.x-dev"
     }
 }

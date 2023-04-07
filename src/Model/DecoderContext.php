@@ -8,7 +8,7 @@ use Mubiridziri\Geocenter\Option\GeodecodeMode;
 use Mubiridziri\Geocenter\Option\Language;
 use Mubiridziri\Geocenter\Option\Spatial;
 
-class DecoderContext
+class DecoderContext implements ContextInterface
 {
     const DEFAULT_LIMIT = 10;
 

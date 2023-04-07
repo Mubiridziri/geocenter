@@ -3,6 +3,7 @@
 namespace Mubiridziri\Geocenter\DependencyInjection;
 
 
+use Mubiridziri\Geocenter\Module\Geodecoder;
 use Mubiridziri\Geocenter\Service\Transport;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -23,7 +24,9 @@ class GeocenterBundleExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $manager = $container->getDefinition(Transport::class);
-        $manager->replaceArgument(0, $config['host']);
-        $manager->replaceArgument(1, $config['license']);
+        $manager->replaceArgument(0, $config['license']);
+
+        $manager = $container->getDefinition(Geodecoder::class);
+        $manager->replaceArgument(0, $config['decoder_url']);
     }
 }
