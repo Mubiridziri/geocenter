@@ -5,4 +5,6 @@ services:
     arguments: [ '', '@http_client' ]
   Mubiridziri\Geocenter\Module\Geodecoder:
     arguments: [ '', '@Mubiridziri\Geocenter\Service\Transport', '@serializer' ]
+  Mubiridziri\Geocenter\Service\GeocenterManager:
+    arguments: [ '@Mubiridziri\Geocenter\Module\Geodecoder' ]
 

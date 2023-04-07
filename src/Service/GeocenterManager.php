@@ -7,13 +7,10 @@ use Mubiridziri\Geocenter\Module\Geodecoder;
 
 class GeocenterManager
 {
-    private Transport $transport;
-
     private Geodecoder $geodecoder;
 
-    public function __construct(Transport $transport, Geodecoder $geodecoder)
+    public function __construct(Geodecoder $geodecoder)
     {
-        $this->transport = $transport;
         $this->geodecoder = $geodecoder;
     }
 
