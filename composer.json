@@ -12,11 +12,11 @@
             "name": "Yury Potapov"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
-        "symfony/dependency-injection": "5.4.x-dev",
-        "symfony/config": "5.4.x-dev",
-        "symfony/http-client": "5.4.x-dev",
-        "symfony/serializer": "5.4.x-dev"
+        "symfony/dependency-injection": "5.4.*",
+        "symfony/config": "5.4.*",
+        "symfony/http-client": "5.4.*",
+        "symfony/serializer": "5.4.*"
     }
 }
