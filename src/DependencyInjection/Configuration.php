@@ -26,6 +26,6 @@ class Configuration implements ConfigurationInterface
             ->cannotBeEmpty()
             ->end();
 
-        return $rootNode;
+        return $treeBuilder;
     }
 }
