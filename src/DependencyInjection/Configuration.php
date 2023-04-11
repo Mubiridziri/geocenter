@@ -25,5 +25,7 @@ class Configuration implements ConfigurationInterface
             ->scalarNode('decoder_url')
             ->cannotBeEmpty()
             ->end();
+
+        return $rootNode;
     }
 }
