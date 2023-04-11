@@ -38,12 +38,9 @@ class Geodecoder
         }
 
         $addresses = [];
-        if($context->getData() === GeodecodeData::DATA_ADDRESS) {
-            $content = $content['address'];
-            foreach ($content as $item) {
-                $address = $this->serializer->deserialize(json_encode($item), Address::class, 'json');
-                $addresses[] = $address;
-            }
+        if ($context->getData() === GeodecodeData::DATA_ADDRESS) {
+            $address = $this->serializer->deserialize(json_encode($content), Address::class . '[]', 'json');
+            $addresses[] = $address;
         }
         return $addresses;
     }
