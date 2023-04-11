@@ -9,8 +9,8 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 
 class Transport
 {
-    const POST = 'post';
-    const GET = 'get';
+    const POST = 'POST';
+    const GET = 'GET';
 
     private string $license;
 
