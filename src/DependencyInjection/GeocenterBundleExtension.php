@@ -24,9 +24,9 @@ class GeocenterBundleExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $manager = $container->getDefinition(Transport::class);
-        $manager->replaceArgument(0, $config['license']);
+        $manager->replaceArgument(0, $config['license'] ?? "");
 
         $manager = $container->getDefinition(Geodecoder::class);
-        $manager->replaceArgument(0, $config['decoder_url']);
+        $manager->replaceArgument(0, $config['decoder_url'] ?? "");
     }
 }
