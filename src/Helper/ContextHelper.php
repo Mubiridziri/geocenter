@@ -19,6 +19,6 @@ class ContextHelper
                 $attributes[] = sprintf('%s=%s', $name, $value);
             }
         }
-        return implode('?', $attributes);
+        return implode('&', $attributes);
     }
 }

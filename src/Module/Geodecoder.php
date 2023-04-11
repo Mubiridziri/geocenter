@@ -29,7 +29,7 @@ class Geodecoder
     public function decode(string $address, DecoderContext $context): array
     {
         $queryString = ContextHelper::contextToQuery($context);
-        $response = $this->transport->request($this->host . "/search&" . $queryString . '?text=' . $address);
+        $response = $this->transport->request($this->host . "/search?" . $queryString . '?text=' . $address);
         $content = $this->transport->getContent($response);
         if ($response->getStatusCode() === Response::HTTP_BAD_REQUEST) {
             $error = $this->serializer->deserialize($content, Error::class, 'json');
