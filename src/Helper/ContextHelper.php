@@ -15,7 +15,9 @@ class ContextHelper
             $name = $property->getName();
             $getter = 'get' . ucfirst($name);
             $value = $context->$getter();
-            $attributes[] = sprintf('%s=%s', $name, $value);
+            if($value) {
+                $attributes[] = sprintf('%s=%s', $name, $value);
+            }
         }
         return implode('?', $attributes);
     }

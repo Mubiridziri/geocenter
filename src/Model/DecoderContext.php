@@ -26,8 +26,8 @@ class DecoderContext implements ContextInterface
 
     private string $spatialOut = Spatial::EPSG_4326;
 
-    private ?int $spatialInX;
-    private ?int $spatialInY;
+    private ?int $spatialInX = null;
+    private ?int $spatialInY = null;
 
     private int $minAddrAccuracy = 0;
 
