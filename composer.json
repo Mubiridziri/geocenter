@@ -12,7 +12,7 @@
             "name": "Yury Potapov"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "symfony/dependency-injection": "5.4.*",
         "symfony/config": "5.4.*",
