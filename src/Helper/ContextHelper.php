@@ -13,7 +13,8 @@ class ContextHelper
         $attributes = [];
         foreach ($properties as $property) {
             $name = $property->getName();
-            $value = $property->getValue($context);
+            $getter = 'get' . ucfirst($name);
+            $value = $context->$getter();
             $attributes[] = sprintf('%s=%s', $name, $value);
         }
         return implode('?', $attributes);
