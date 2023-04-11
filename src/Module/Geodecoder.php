@@ -7,6 +7,7 @@ use Mubiridziri\Geocenter\Helper\ContextHelper;
 use Mubiridziri\Geocenter\Model\Address;
 use Mubiridziri\Geocenter\Model\DecoderContext;
 use Mubiridziri\Geocenter\Model\Error;
+use Mubiridziri\Geocenter\Option\GeodecodeData;
 use Mubiridziri\Geocenter\Service\Transport;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -35,14 +36,14 @@ class Geodecoder
             $error = $this->serializer->deserialize($content, Error::class, 'json');
             throw new DecoderException($error->getMessage(), $error);
         }
-        if (!isset($content['address'])) {
-            throw new \Exception("Сервер корректно вернут ответ, но мы его не поняли");
-        }
-        $content = $content['address'];
+
         $addresses = [];
-        foreach ($content as $item) {
-            $address = $this->serializer->deserialize($item, Address::class, 'json');
-            $addresses[] = $address;
+        if($context->getData() === GeodecodeData::DATA_ADDRESS) {
+            $content = $content['address'];
+            foreach ($content as $item) {
+                $address = $this->serializer->deserialize(json_encode($item), Address::class, 'json');
+                $addresses[] = $address;
+            }
         }
         return $addresses;
     }
