@@ -8,6 +8,7 @@ use Mubiridziri\Geocenter\Model\Address;
 use Mubiridziri\Geocenter\Model\DecoderContext;
 use Mubiridziri\Geocenter\Model\Error;
 use Mubiridziri\Geocenter\Option\GeodecodeData;
+use Mubiridziri\Geocenter\Option\GeodecodeFormat;
 use Mubiridziri\Geocenter\Service\Transport;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -38,8 +39,12 @@ class Geodecoder
         }
 
         $addresses = [];
-        if ($context->getData() === GeodecodeData::DATA_ADDRESS) {
-            $address = $this->serializer->deserialize(json_encode(array_values($content['address'])), Address::class . '[]', 'json');
+        if ($context->getFormat() === GeodecodeFormat::SIMPLE_FORMAT && isset($content['address'])) {
+            $address = $this->serializer->deserialize(
+                json_encode(array_values($content['address'])),
+                Address::class . '[]',
+                'json'
+            );
             $addresses[] = $address;
         }
         return $addresses;
