@@ -38,15 +38,13 @@ class Geodecoder
             throw new DecoderException($error->getMessage(), $error);
         }
 
-        $addresses = [];
         if ($context->getFormat() === GeodecodeFormat::SIMPLE_FORMAT && isset($content['address'])) {
-            $address = $this->serializer->deserialize(
+            return $this->serializer->deserialize(
                 json_encode(array_values($content['address'])),
                 Address::class . '[]',
                 'json'
             );
-            $addresses[] = $address;
         }
-        return $addresses;
+        return [];
     }
 }
