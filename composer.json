@@ -18,7 +18,7 @@
         "symfony/config": "5.4.*",
         "symfony/http-client": "5.4.*",
         "symfony/serializer": "5.4.*",
-      "ext-json": "*",
-        "symfony/serializer-pack": "dev-main"
+        "ext-json": "*",
+        "symfony/serializer-pack": "1.2.*"
     }
 }
