@@ -7,12 +7,14 @@ use Mubiridziri\Geocenter\Helper\ContextHelper;
 use Mubiridziri\Geocenter\Model\Address;
 use Mubiridziri\Geocenter\Model\DecoderContext;
 use Mubiridziri\Geocenter\Model\Error;
+use Mubiridziri\Geocenter\Model\LatLng;
+use Mubiridziri\Geocenter\Model\ReverseDecoderContext;
 use Mubiridziri\Geocenter\Option\GeodecodeFormat;
 use Mubiridziri\Geocenter\Service\Transport;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\SerializerInterface;
 
-class Geodecoder
+class ReverseGeodecode
 {
     private string $host;
 
@@ -27,10 +29,12 @@ class Geodecoder
         $this->serializer = $serializer;
     }
 
-    public function decode(string $address, DecoderContext $context): array
+    public function reverse(LatLng $latLng, ReverseDecoderContext $context): array
     {
         $queryString = ContextHelper::contextToQuery($context);
-        $response = $this->transport->request($this->host . "/search?" . $queryString . '&text=' . $address);
+        $x = $latLng->getLat();
+        $y = $latLng->getLng();
+        $response = $this->transport->request($this->host . "/getAddress?" . $queryString . '&x=' . $x . "&y=" . $y);
         $content = $this->transport->getContent($response);
         if ($response->getStatusCode() === Response::HTTP_BAD_REQUEST) {
             $error = $this->serializer->deserialize($content, Error::class, 'json');
@@ -44,6 +48,13 @@ class Geodecoder
                 'json'
             );
         }
+        return [];
+    }
+
+    public function reverseGeoJson(string $geoJson, ReverseDecoderContext $context): array
+    {
+        $queryString = ContextHelper::contextToQuery($context);
+
         return [];
     }
 }

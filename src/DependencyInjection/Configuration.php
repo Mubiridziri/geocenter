@@ -24,6 +24,9 @@ class Configuration implements ConfigurationInterface
             ->end()
             ->scalarNode('decoder_url')
             ->cannotBeEmpty()
+            ->end()
+            ->scalarNode('reverse_decoder_url')
+            ->cannotBeEmpty()
             ->end();
 
         return $treeBuilder;

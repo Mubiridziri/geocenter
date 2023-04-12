@@ -42,9 +42,11 @@ class DecoderContext implements ContextInterface
     /**
      * @param int $limit
      */
-    public function setLimit(int $limit): void
+    public function setLimit(int $limit): ContextInterface
     {
         $this->limit = $limit;
+
+        return $this;
     }
 
     /**
@@ -58,9 +60,11 @@ class DecoderContext implements ContextInterface
     /**
      * @param string $format
      */
-    public function setFormat(string $format): void
+    public function setFormat(string $format): ContextInterface
     {
         $this->format = $format;
+
+        return $this;
     }
 
     /**
@@ -74,9 +78,11 @@ class DecoderContext implements ContextInterface
     /**
      * @param string $mode
      */
-    public function setMode(string $mode): void
+    public function setMode(string $mode): ContextInterface
     {
         $this->mode = $mode;
+
+        return $this;
     }
 
     /**
@@ -90,9 +96,11 @@ class DecoderContext implements ContextInterface
     /**
      * @param string $data
      */
-    public function setData(string $data): void
+    public function setData(string $data): ContextInterface
     {
         $this->data = $data;
+
+        return $this;
     }
 
     /**
@@ -106,9 +114,11 @@ class DecoderContext implements ContextInterface
     /**
      * @param string $lang
      */
-    public function setLang(string $lang): void
+    public function setLang(string $lang): ContextInterface
     {
         $this->lang = $lang;
+
+        return $this;
     }
 
     /**
@@ -122,9 +132,11 @@ class DecoderContext implements ContextInterface
     /**
      * @param string $spatialIn
      */
-    public function setSpatialIn(string $spatialIn): void
+    public function setSpatialIn(string $spatialIn): ContextInterface
     {
         $this->spatialIn = $spatialIn;
+
+        return $this;
     }
 
     /**
@@ -138,9 +150,11 @@ class DecoderContext implements ContextInterface
     /**
      * @param string $spatialOut
      */
-    public function setSpatialOut(string $spatialOut): void
+    public function setSpatialOut(string $spatialOut): ContextInterface
     {
         $this->spatialOut = $spatialOut;
+
+        return $this;
     }
 
     /**
@@ -154,9 +168,11 @@ class DecoderContext implements ContextInterface
     /**
      * @param int|null $spatialInX
      */
-    public function setSpatialInX(?int $spatialInX): void
+    public function setSpatialInX(?int $spatialInX): ContextInterface
     {
         $this->spatialInX = $spatialInX;
+
+        return $this;
     }
 
     /**
@@ -170,9 +186,11 @@ class DecoderContext implements ContextInterface
     /**
      * @param int|null $spatialInY
      */
-    public function setSpatialInY(?int $spatialInY): void
+    public function setSpatialInY(?int $spatialInY): ContextInterface
     {
         $this->spatialInY = $spatialInY;
+
+        return $this;
     }
 
     /**
@@ -186,8 +204,10 @@ class DecoderContext implements ContextInterface
     /**
      * @param int $minAddrAccuracy
      */
-    public function setMinAddrAccuracy(int $minAddrAccuracy): void
+    public function setMinAddrAccuracy(int $minAddrAccuracy): ContextInterface
     {
         $this->minAddrAccuracy = $minAddrAccuracy;
+
+        return $this;
     }
 }

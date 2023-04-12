@@ -10,6 +10,8 @@ class Address
 
     private string $lng;
 
+    private ?string $type = null;
+
     /**
      * @return string
      */
@@ -66,5 +68,21 @@ class Address
     public function setY($value)
     {
         $this->lng = $value;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string|null $type
+     */
+    public function setType(?string $type): void
+    {
+        $this->type = $type;
     }
 }
