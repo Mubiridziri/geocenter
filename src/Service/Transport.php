@@ -2,7 +2,6 @@
 
 namespace Mubiridziri\Geocenter\Service;
 
-use Mubiridziri\Geocenter\Exception\TransportException;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
@@ -12,16 +11,10 @@ class Transport
     const POST = 'POST';
     const GET = 'GET';
 
-    private string $license;
-
     private HttpClientInterface $client;
 
-    /**
-     * @throws TransportException
-     */
-    public function __construct(string $license, HttpClientInterface $client)
+    public function __construct(HttpClientInterface $client)
     {
-        $this->license = $license;
         $this->client = $client;
     }
 
@@ -36,7 +29,7 @@ class Transport
         ]);
     }
 
-    public function getContent(ResponseInterface $response)
+    public function getContent(ResponseInterface $response): array
     {
         return $response->toArray();
     }

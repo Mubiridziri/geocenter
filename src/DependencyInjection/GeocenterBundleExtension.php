@@ -5,7 +5,6 @@ namespace Mubiridziri\Geocenter\DependencyInjection;
 
 use Mubiridziri\Geocenter\Module\Geodecoder;
 use Mubiridziri\Geocenter\Module\ReverseGeodecode;
-use Mubiridziri\Geocenter\Service\Transport;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
@@ -23,9 +22,6 @@ class GeocenterBundleExtension extends Extension
 
         $configuration = $this->getConfiguration($configs, $container);
         $config = $this->processConfiguration($configuration, $configs);
-
-        $manager = $container->getDefinition(Transport::class);
-        $manager->replaceArgument(0, $config['license'] ?? "");
 
         $manager = $container->getDefinition(Geodecoder::class);
         $manager->replaceArgument(0, $config['decoder_url'] ?? "");

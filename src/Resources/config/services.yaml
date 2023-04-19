@@ -2,7 +2,7 @@ parameters:
 # nothing to declare
 services:
   Mubiridziri\Geocenter\Service\Transport:
-    arguments: [ '', '@http_client' ]
+    arguments: ['@http_client' ]
   Mubiridziri\Geocenter\Module\Geodecoder:
     arguments: [ '', '@Mubiridziri\Geocenter\Service\Transport', '@serializer' ]
   Mubiridziri\Geocenter\Module\ReverseGeodecode:
