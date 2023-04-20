@@ -5,6 +5,7 @@ namespace Mubiridziri\Geocenter\DependencyInjection;
 
 use Mubiridziri\Geocenter\Module\Geodecoder;
 use Mubiridziri\Geocenter\Module\ReverseGeodecode;
+use Mubiridziri\Geocenter\Module\Routing;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
@@ -28,5 +29,8 @@ class GeocenterBundleExtension extends Extension
 
         $manager = $container->getDefinition(ReverseGeodecode::class);
         $manager->replaceArgument(0, $config['reverse_decoder_url'] ?? "");
+
+        $manager = $container->getDefinition(Routing::class);
+        $manager->replaceArgument(0, $config['routing_url'] ?? "");
     }
 }
