@@ -14,7 +14,7 @@ $ composer require mubiridziri/geocenter
  - [Первоначальная настройка](docs/INDEX.md)
  - [Прямое геокодирование](docs/GEODECODE.md)
  - [Обратное геокодирование](docs/REVERSE_GEODECODE.md)
- - Маршрутизация [WIP]
+ - [Маршрутизация](docs/ROUTING.md)
  - Публикация геоданных [WIP]
 
 ## TODO
