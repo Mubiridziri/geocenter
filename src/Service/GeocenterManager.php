@@ -3,6 +3,7 @@
 namespace Mubiridziri\Geocenter\Service;
 
 use Mubiridziri\Geocenter\Model\DecoderContext;
+use Mubiridziri\Geocenter\Model\Direction;
 use Mubiridziri\Geocenter\Model\LatLng;
 use Mubiridziri\Geocenter\Model\ReverseDecoderContext;
 use Mubiridziri\Geocenter\Module\Geodecoder;
@@ -32,5 +33,10 @@ class GeocenterManager
     public function reverse(LatLng $latLng, ReverseDecoderContext $context)
     {
         return $this->reverseGeodecode->reverse($latLng, $context);
+    }
+
+    public function getRoute(Direction $direction): array
+    {
+        return $this->routing->getRoute($direction);
     }
 }

@@ -18,10 +18,12 @@ class Point
 
     /**
      * @param float $x
+     * @return Point
      */
-    public function setX(float $x): void
+    public function setX(float $x): Point
     {
         $this->x = $x;
+        return $this;
     }
 
     /**
@@ -34,9 +36,11 @@ class Point
 
     /**
      * @param float $y
+     * @return Point
      */
-    public function setY(float $y): void
+    public function setY(float $y): Point
     {
         $this->y = $y;
+        return $this;
     }
 }

@@ -18,25 +18,11 @@ class VehicleOptions
 
     /**
      * @param bool|null $starting
+     * @return VehicleOptions
      */
-    public function setStarting(?bool $starting): void
+    public function setStarting(?bool $starting): VehicleOptions
     {
         $this->starting = $starting;
-    }
-
-    /**
-     * @return array|null
-     */
-    public function getProperties(): ?array
-    {
-        return $this->properties;
-    }
-
-    /**
-     * @param array|null $properties
-     */
-    public function setProperties(?array $properties): void
-    {
-        $this->properties = $properties;
+        return $this;
     }
 }
