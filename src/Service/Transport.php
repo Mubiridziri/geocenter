@@ -21,7 +21,7 @@ class Transport
     /**
      * @throws TransportExceptionInterface
      */
-    public function request(string $url, string $method = self::GET, array $headers = [], array $body = []): ResponseInterface
+    public function request(string $url, string $method = self::GET, array $headers = [], string $body = ''): ResponseInterface
     {
         return $this->client->request($method, $url, [
             'headers' => $headers,

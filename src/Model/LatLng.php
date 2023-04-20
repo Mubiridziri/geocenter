@@ -4,45 +4,49 @@ namespace Mubiridziri\Geocenter\Model;
 
 class LatLng
 {
-    private string $lat;
+    private float $lat;
 
-    private string $lng;
+    private float $lng;
 
-    public function __construct(string $lat, string $lng)
+    public function __construct(float $lat, float $lng)
     {
         $this->lat = $lat;
         $this->lng = $lng;
     }
 
     /**
-     * @return string
+     * @return float
      */
-    public function getLat(): string
+    public function getLat(): float
     {
         return $this->lat;
     }
 
     /**
-     * @param string $lat
+     * @param float $lat
+     * @return LatLng
      */
-    public function setLat(string $lat): void
+    public function setLat(float $lat): LatLng
     {
         $this->lat = $lat;
+        return $this;
     }
 
     /**
-     * @return string
+     * @return float
      */
-    public function getLng(): string
+    public function getLng(): float
     {
         return $this->lng;
     }
 
     /**
-     * @param string $lng
+     * @param float $lng
+     * @return LatLng
      */
-    public function setLng(string $lng): void
+    public function setLng(float $lng): LatLng
     {
         $this->lng = $lng;
+        return $this;
     }
 }
