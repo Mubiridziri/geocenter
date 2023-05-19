@@ -1,7 +1,7 @@
 # Прямое геокодирование
 
 ___
-> Получение координат по указанному адресу
+### Поисковый запрос объектов по текстовой строке (search)
 
 ```
  /**
@@ -14,6 +14,28 @@ ___
         $results = $manager->geodecode("Россия, Челябинская область, городской округ Магнитогорский, г Магнитогорск, ул. Рысакова", (new DecoderContext())
             ->setData(GeodecodeData::DATA_ADDRESS)
             ->setFormat(GeodecodeFormat::SIMPLE_FORMAT)
+        );
+        return $this->json($results);
+    }
+```
+
+### Запрос автозаполнения текстовой строки для поиска (suggest)
+
+
+```
+ /**
+     * @param GeocenterManager $manager
+     * @param Request $request
+     * @return JsonResponse
+     * @Route("/suggest", methods={"GET"})
+     */
+    public function suggestAction(GeocenterManager $manager, Request $request)
+    {
+        $text = $request->query->get('text', '');
+        $results = $manager->suggest($text, new LatLng('0', '0'), (new DecoderContext())
+            ->setData(GeodecodeData::DATA_ADDRESS)
+            ->setFormat(GeodecodeFormat::GEOJSON_SUGGEST_FORMAT)
+            ->setLimit(100)
         );
         return $this->json($results);
     }
