@@ -32,21 +32,26 @@ class ReverseGeodecode
         $queryString = ContextHelper::contextToQuery($context);
         $x = $latLng->getLat();
         $y = $latLng->getLng();
-        $response = $this->transport->request($this->host . "/getAddress?" . $queryString . '&x=' . $x . "&y=" . $y);
+        $response = $this->transport->request(sprintf("%s/getAddress?%s&x=%s&y=%s", $this->host, $queryString, $x, $y));
         $content = $this->transport->getContent($response);
         if ($response->getStatusCode() === 400) {
             $error = $this->serializer->deserialize($content, Error::class, 'json');
             throw new DecoderException($error->getMessage(), $error);
         }
 
-        return $context->getFormat() === GeodecodeFormat::SIMPLE_FORMAT && isset($content['address']) ? $this->serializer->deserialize(
-            json_encode(array_values($content['address'])),
-            Address::class . '[]',
-            'json'
-        ) : [];
+        $format = $context->getFormat();
+        if ($format === GeodecodeFormat::SIMPLE_FORMAT && isset($content['address'])) {
+            return $this->serializer->deserialize(
+                json_encode(array_values($content['address'])),
+                Address::class . '[]',
+                'json'
+            );
+        }
+
+        return $content;
     }
 
-    public function reverseGeoJson(string $geoJson, ReverseDecoderContext $context): array
+    private function reverseGeoJson(string $geoJson, ReverseDecoderContext $context): array
     {
         $queryString = ContextHelper::contextToQuery($context);
 

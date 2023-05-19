@@ -25,12 +25,17 @@ class GeocenterManager
         $this->routing = $routing;
     }
 
-    public function geodecode(string $address, DecoderContext $context)
+    public function geodecode(string $address, DecoderContext $context): array
     {
         return $this->geodecoder->decode($address, $context);
     }
 
-    public function reverse(LatLng $latLng, ReverseDecoderContext $context)
+    public function suggest(string $address, LatLng $referencePoint, DecoderContext $context): array
+    {
+        return $this->geodecoder->suggest($address, $referencePoint, $context);
+    }
+
+    public function reverse(LatLng $latLng, ReverseDecoderContext $context): array
     {
         return $this->reverseGeodecode->reverse($latLng, $context);
     }

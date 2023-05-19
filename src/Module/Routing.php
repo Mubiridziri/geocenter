@@ -28,7 +28,7 @@ class Routing
     {
         $directionJson = $this->serializer->serialize($direction, 'json', [AbstractObjectNormalizer::SKIP_NULL_VALUES => true]);
 
-        $response = $this->transport->request($this->host . "/directions", Transport::POST, [], $directionJson);
+        $response = $this->transport->request(sprintf("%s/directions", $this->host), Transport::POST, [], $directionJson);
         $content = $this->transport->getContent($response);
         if ($response->getStatusCode() === 400) {
             $error = $this->serializer->deserialize($content, Error::class, 'json');
