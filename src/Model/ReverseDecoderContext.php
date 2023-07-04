@@ -24,7 +24,7 @@ class ReverseDecoderContext implements ContextInterface
 
     private int $maxCount = 1;
 
-    private string $type;
+    private ?string $type = null;
 
     private string $sortBy = GeodecodeSortBy::TYPE_AND_DIST;
 
@@ -38,6 +38,7 @@ class ReverseDecoderContext implements ContextInterface
 
     /**
      * @param string $format
+     * @return ContextInterface
      */
     public function setFormat(string $format): ContextInterface
     {
@@ -56,6 +57,7 @@ class ReverseDecoderContext implements ContextInterface
 
     /**
      * @param string $spatialIn
+     * @return ContextInterface
      */
     public function setSpatialIn(string $spatialIn): ContextInterface
     {
@@ -74,6 +76,7 @@ class ReverseDecoderContext implements ContextInterface
 
     /**
      * @param string $spatialOut
+     * @return ContextInterface
      */
     public function setSpatialOut(string $spatialOut): ContextInterface
     {
@@ -92,6 +95,7 @@ class ReverseDecoderContext implements ContextInterface
 
     /**
      * @param string $lang
+     * @return ContextInterface
      */
     public function setLang(string $lang): ContextInterface
     {
@@ -110,6 +114,7 @@ class ReverseDecoderContext implements ContextInterface
 
     /**
      * @param string $pattern
+     * @return ContextInterface
      */
     public function setPattern(string $pattern): ContextInterface
     {
@@ -128,6 +133,7 @@ class ReverseDecoderContext implements ContextInterface
 
     /**
      * @param int $maxDist
+     * @return ContextInterface
      */
     public function setMaxDist(int $maxDist): ContextInterface
     {
@@ -146,6 +152,7 @@ class ReverseDecoderContext implements ContextInterface
 
     /**
      * @param int $maxCount
+     * @return ContextInterface
      */
     public function setMaxCount(int $maxCount): ContextInterface
     {
@@ -155,17 +162,18 @@ class ReverseDecoderContext implements ContextInterface
     }
 
     /**
-     * @return string
+     * @return ?string
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
 
     /**
-     * @param string $type
+     * @param ?string $type
+     * @return ContextInterface
      */
-    public function setType(string $type): ContextInterface
+    public function setType(?string $type): ContextInterface
     {
         $this->type = $type;
 
@@ -182,6 +190,7 @@ class ReverseDecoderContext implements ContextInterface
 
     /**
      * @param string $sortBy
+     * @return ContextInterface
      */
     public function setSortBy(string $sortBy): ContextInterface
     {
