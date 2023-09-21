@@ -30,8 +30,8 @@ class ReverseGeodecode
     public function reverse(LatLng $latLng, ReverseDecoderContext $context): array
     {
         $queryString = ContextHelper::contextToQuery($context);
-        $x = $latLng->getLng();
-        $y = $latLng->getLat();
+        $x = $latLng->getLat();
+        $y = $latLng->getLng();
         $response = $this->transport->request(sprintf("%s/getAddress?%s&x=%s&y=%s", $this->host, $queryString, $x, $y));
         $content = $this->transport->getContent($response);
         if ($response->getStatusCode() === 400) {

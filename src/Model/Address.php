@@ -62,12 +62,12 @@ class Address
 
     public function setX($value)
     {
-        $this->lat = $value;
+        $this->lng = $value;
     }
 
     public function setY($value)
     {
-        $this->lng = $value;
+        $this->lat = $value;
     }
 
     /**
